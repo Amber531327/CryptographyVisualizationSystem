@@ -6,7 +6,7 @@ import ParticleBackground from '../components/ParticleBackground';
 export default function HomePage() {
   // 悬停状态
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  
+
   return (
     <div className="home-container">
       {/* 粒子背景 */}
@@ -22,14 +22,14 @@ export default function HomePage() {
         <h1 className="main-title">密码学可视化系统</h1>
         <p className="subtitle">通过交互式演示了解数字签名和公钥加密的原理</p>
       </motion.div>
-      
+          
       {/* 系统介绍区域 */}
-      <motion.div 
+              <motion.div 
         className="intro-section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-      >
+                >
         <div className="intro-container">
           <h2 className="section-title">系统简介</h2>
           <p className="intro-text">
@@ -42,33 +42,33 @@ export default function HomePage() {
               <div className="feature-icon">🔏</div>
               <h3>数据完整性</h3>
               <p>确保数据在传输过程中不被篡改</p>
-            </div>
+                      </div>
             <div className="feature">
               <div className="feature-icon">🔒</div>
               <h3>数据保密性</h3>
               <p>保证敏感信息不被未授权方获取</p>
-            </div>
+                    </div>
             <div className="feature">
               <div className="feature-icon">✓</div>
               <h3>身份认证</h3>
               <p>验证通信双方的真实身份</p>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+                    </div>
+                      </div>
+                    </div>
+                  </motion.div>
       
       {/* 功能导航卡片区域 */}
-      <motion.div 
+                  <motion.div 
         className="features-section"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-      >
+                  >
         <h2 className="section-title">功能模块</h2>
         
         <div className="feature-cards">
           {/* 数字签名卡片 */}
-          <motion.div 
+                <motion.div 
             className={`feature-card ${hoveredCard === 'signature' ? 'hovered' : ''}`}
             whileHover={{ 
               scale: 1.05,
@@ -126,30 +126,30 @@ export default function HomePage() {
                   进入演示
                 </Link>
               </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </motion.div>
-      
+                  </div>
+                </motion.div>
+                  </div>
+                </motion.div>
+                
       {/* 底部性能评估入口 */}
-      <motion.div 
+                <motion.div 
         className="performance-section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.7 }}
-      >
+                >
         <Link href="/performance" className="performance-link">
           <div className="performance-card">
             <div className="performance-icon">📊</div>
             <div className="performance-text">
               <h3>算法性能评估</h3>
               <p>比较不同密码学算法的性能指标</p>
-            </div>
+                  </div>
             <div className="arrow-icon">→</div>
-          </div>
+      </div>
         </Link>
       </motion.div>
-      
+
       {/* 页脚 */}
       <motion.footer 
         className="home-footer"

@@ -2,8 +2,13 @@ import { RSA } from './RSA';
 import { DSA } from './DSA';
 import { ECDSA } from './ECDSA';
 import { CryptoAlgorithm } from './types';
+// 导入加密算法工厂
+import { EncryptionAlgorithmFactory } from './encryption-factory';
 
 export type { KeyPair, SignatureResult } from './types';
+// 重导出加密算法相关类型和工厂
+export { EncryptionAlgorithmFactory };
+export type { EncryptionResult, EncryptionAlgorithm } from './encryption-types';
 
 /**
  * 算法工厂类，用于获取指定的签名算法实例
