@@ -42,7 +42,7 @@ export default function PublicKeyEncryptionPage() {
       
       // 设置动画状态和提示信息
       setAnimation('keys-generated');
-      setStatusMessage('密钥生成成功');
+      setStatusMessage('密钥生成成功，可以继续加密消息');
       
       // 重置加密和解密结果
       setEncryptionResult(null);
@@ -59,8 +59,13 @@ export default function PublicKeyEncryptionPage() {
    * 加密消息
    */
   const encryptMessage = async () => {
-    if (!message || !currentKeys) {
-      setStatusMessage('请确保您已输入消息且已生成密钥');
+    if (!message) {
+      setStatusMessage('请输入要加密的消息');
+      return;
+    }
+    
+    if (!currentKeys) {
+      setStatusMessage('请先生成密钥对');
       return;
     }
     
@@ -77,7 +82,7 @@ export default function PublicKeyEncryptionPage() {
       
       // 设置动画状态和提示信息
       setAnimation('message-encrypted');
-      setStatusMessage('消息加密成功');
+      setStatusMessage('消息加密成功，可以继续解密');
       
       // 重置解密结果
       setDecryptedMessage(null);
@@ -93,8 +98,13 @@ export default function PublicKeyEncryptionPage() {
    * 解密消息
    */
   const decryptMessage = async () => {
-    if (!encryptionResult || !currentKeys) {
-      setStatusMessage('请确保您已加密消息且拥有密钥');
+    if (!encryptionResult) {
+      setStatusMessage('请先加密消息');
+      return;
+    }
+    
+    if (!currentKeys) {
+      setStatusMessage('密钥丢失，请重新生成密钥');
       return;
     }
     
@@ -225,28 +235,33 @@ export default function PublicKeyEncryptionPage() {
           <div className="control-panel">
             <h2>操作面板</h2>
             
-            {/* 密钥生成 */}
+            {/* 消息输入 - Now step 1 */}
             <div className="control-group">
-              <h3>步骤 1: 密钥生成</h3>
-              <button 
-                className="action-button" 
-                onClick={generateKeys}
-                disabled={isLoading}
-              >
-                {isLoading && animation === 'keys-generated' ? '生成中...' : '生成密钥对'}
-              </button>
-            </div>
-            
-            {/* 消息输入和加密 */}
-            <div className="control-group">
-              <h3>步骤 2: 消息加密</h3>
+              <h3>步骤 1: 输入消息</h3>
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="输入要加密的消息..."
                 rows={4}
-                disabled={!currentKeys || isLoading}
+                disabled={isLoading}
               />
+            </div>
+            
+            {/* 密钥生成 - Now step 2 */}
+            <div className="control-group">
+              <h3>步骤 2: 密钥生成</h3>
+              <button 
+                className="action-button" 
+                onClick={generateKeys}
+                disabled={!message || isLoading}
+              >
+                {isLoading && animation === 'keys-generated' ? '生成中...' : '生成密钥对'}
+              </button>
+            </div>
+            
+            {/* 消息加密 - Now step 3 */}
+            <div className="control-group">
+              <h3>步骤 3: 消息加密</h3>
               <button 
                 className="action-button"
                 onClick={encryptMessage}
@@ -256,9 +271,9 @@ export default function PublicKeyEncryptionPage() {
               </button>
             </div>
             
-            {/* 消息解密 */}
+            {/* 消息解密 - Now step 4 */}
             <div className="control-group">
-              <h3>步骤 3: 消息解密</h3>
+              <h3>步骤 4: 消息解密</h3>
               <button 
                 className="action-button"
                 onClick={decryptMessage}

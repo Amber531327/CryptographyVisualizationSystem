@@ -1612,6 +1612,13 @@ textarea {
   text-align: center;
 }
 
+.performance-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 .performance-link {
   text-decoration: none;
   color: inherit;
@@ -1627,6 +1634,7 @@ textarea {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   gap: 1.5rem;
+  width: 380px;
 }
 
 .performance-card:hover {
@@ -1731,6 +1739,11 @@ textarea {
   }
   
   .feature {
+    width: 90%;
+    max-width: 350px;
+  }
+  
+  .performance-card {
     width: 90%;
     max-width: 350px;
   }

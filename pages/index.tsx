@@ -138,16 +138,29 @@ export default function HomePage() {
                   animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.7 }}
                 >
-        <Link href="/performance" className="performance-link">
-          <div className="performance-card">
-            <div className="performance-icon">📊</div>
-            <div className="performance-text">
-              <h3>算法性能评估</h3>
-              <p>比较不同密码学算法的性能指标</p>
+        <div className="performance-links">
+          <Link href="/performance" className="performance-link">
+            <div className="performance-card">
+              <div className="performance-icon">📊</div>
+              <div className="performance-text">
+                <h3>数字签名性能评估</h3>
+                <p>比较不同签名算法的性能指标</p>
+              </div>
+              <div className="arrow-icon">→</div>
                   </div>
-            <div className="arrow-icon">→</div>
+          </Link>
+          
+          <Link href="/encryption-performance" className="performance-link">
+            <div className="performance-card">
+              <div className="performance-icon">📈</div>
+              <div className="performance-text">
+                <h3>公钥加密性能评估</h3>
+                <p>比较不同加密算法的性能指标</p>
+        </div>
+              <div className="arrow-icon">→</div>
       </div>
         </Link>
+      </div>
       </motion.div>
 
       {/* 页脚 */}
